@@ -1,3 +1,5 @@
+package test;
+
 //可选的返回关键字：如果主体只有一个表达式返回值则编译器会自动返回值，大括号需要指定明表达式返回了一个数值。
 //        Lambda 表达式实例
 //        Lambda 表达式的简单例子:
@@ -16,9 +18,9 @@
 //
 //// 5. 接受一个 string 对象,并在控制台打印,不返回任何值(看起来像是返回void)
 //        (String s) -> System.out.print(s)
-//        在 Java8Tester.java 文件输入以下代码：
+//        在 test.Java8Tester.java 文件输入以下代码：
 //
-//        Java8Tester.java 文件
+//        test.Java8Tester.java 文件
 public class Java8Tester {
     public static void main(String args[]){
         Java8Tester tester = new Java8Tester();
