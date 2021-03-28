@@ -1,35 +1,43 @@
 import data.Entity;
 import data.KG;
 import data.Triple;
+import jdk.nashorn.internal.objects.annotations.Function;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public abstract class MyRunnable implements Runnable {
-    public Object data;
+    private Map<String ,Object> data;
     private String name = "";
 
     public void setName(String name) {
         this.name = name;
     }
 
-
-    MyRunnable(Object data) {
+    MyRunnable(Map<String ,Object> data) {
         this.data = data;
     }
+    MyRunnable() { }
 
-    MyRunnable(Object data, String name) {
+    MyRunnable(Map<String ,Object> data, String name) {
         this.data = data;
         this.name = name;
+    }
+    public void addData(String name, Object value){
+        this.data.put(name, value);
+    }
+    public Object getData(){
+        return this.data;
+    }
+    public Object getDataItem(String name){
+        return this.data.get(name);
     }
 
     public void run() {
         System.out.println(name + "Throwing in " + "MyThread");
 //        throw new RuntimeException();
-        synchronized (MyRunnable.class) {
             run1();
-        }
     }
 
     public abstract void run1();
@@ -41,6 +49,10 @@ public abstract class MyRunnable implements Runnable {
 
         return cast;
     }
+
+    public String getName(){
+        return this.name;
+    };
 }
 
 class MyR implements Runnable {
