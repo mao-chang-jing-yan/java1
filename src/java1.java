@@ -1,12 +1,10 @@
 import data.*;
 
 import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class java1 {
-    public void main1(String[] args) {
+    public void main12(String[] args) {
         long startMili = System.currentTimeMillis();// 当前时间对应的毫秒数
         System.out.println("开始 " + startMili + "\n");
 
@@ -56,60 +54,32 @@ public class java1 {
     }
 
     public static void main(String[] args) {
+        List<String[]> s = new LinkedList<String[]>();
+        String[] a = {"12323", "1234"};
+        s.add(a);
+        s.add(a);
+        s.add(a);
+        s.add(a);
 
-        long startMili = System.currentTimeMillis();// 当前时间对应的毫秒数
-        System.out.println("开始 " + startMili + "\n");
 
-        KG kg = new KG();
-        int num = 0;
+        MyRunnable myThread = new MyRunnable(s) {
+            @Override
+            public void run1() {
+//                if(this.data instanceof HashMap){
+                @SuppressWarnings("unchecked")
+                List<String[]> s = (List<String[]>) this.data;
 
-        int threadNUM = 1;
-        int size;
+//                }
 
-        List<String[]> strings = File.readCSV("/Users/xiaoshen/IdeaProjects/java1/src/file/personrelkg.csv");
 
-        size = strings.size();
-        size = 1000;
-        int l = size / threadNUM;
-        for (int j = 0; j < threadNUM; j++) {
-            int m = l * j;
-            int n = m + l;
-            if (j == threadNUM - 1){
-                n = size;
             }
-            List<String[]> s = strings.subList(m,n);
-            MyThread myThread =  new MyThread(kg, s) {
-                @Override
-                public void run1() {
-                    for (int i = 0; i < this.a.size(); i++) {
-                        String parentName = this.a.get(i)[3];
-                        String nextName = this.a.get(i)[0];
-                        String relationShape = this.a.get(i)[1];
-                        System.out.print(i + " - " + parentName + " - " + nextName + " - " + relationShape + "\r");
-                        int weight = 0;
-//            Entity entity = new Entity("", "", "", "");
-                        Entity head = new Entity(parentName, "", "", "");
-                        Entity tail = new Entity(nextName, "", "", "");
-//            kg.addNode(new Node(head));
-//            kg.addNode(new Node(tail));
-                        Triple triple = new Triple("", head, tail, relationShape, "");
-
-                        this.kg.addTriple(triple);
-                    }
-                }
-            };
-            myThread.start();
-        }
+        };
+        Thread thread = new Thread(myThread);
+        thread.start();
 
 
-
-//        kg.printNodes();
-        kg.printGraph();
-//        kg.printTriple();
-
-        long endMili = System.currentTimeMillis();
-//        System.out.println("结束 s"+endMili);
-        System.out.println("\n\n总耗时为：" + (endMili - startMili) + "毫秒");
+        thread = new Thread(myThread);
+        thread.start();
     }
 
 

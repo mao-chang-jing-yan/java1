@@ -287,7 +287,7 @@ public class KG {
         System.out.println("this.nodes.size()      = " + this.nodes.size());
 
         System.out.println("this.triples.size()    = " + this.triples.size());
-        System.out.println("this.edges-edge.size() = " + NUM);
+        System.out.println("this.edges-edge.size() = " + NUM / 2);
 
     }
 
