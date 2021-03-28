@@ -1,5 +1,6 @@
 package data;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.*;
@@ -99,8 +100,8 @@ public class KG {
     public Map<String, Object> toMap() {
         Map<String, Object> map1 = new HashMap<String, Object>();
 
-        map1.put("nodes", nodes);
-        map1.put("triples", triples);
+        map1.put("nodes", Node.NodeListToJsonArray(this.nodes));
+        map1.put("triples", Triple.tripleListToJsonArray(this.triples));
         map1.put("edges", edges);
         map1.put("directions", directions);
         return map1;

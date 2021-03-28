@@ -1,8 +1,10 @@
 package data;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -135,6 +137,15 @@ public class Item {
         map1.put("entityIds", entityIds);
         map1.put("tripleIds", tripleIds);
         return map1;
+    }
+
+    public static JSONArray ItemListToJsonArray(List<Item> l){
+        JSONArray jsonArray = new JSONArray();
+        for (Item n:l
+        ) {
+            jsonArray.add(n.toJson());
+        }
+        return jsonArray;
     }
 
     public void setDocId(String docId) {

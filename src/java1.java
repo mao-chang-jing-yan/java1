@@ -69,9 +69,9 @@ public class java1 {
         List<Thread> threadList = new LinkedList<Thread>();
 
         KG kg = new KG();
-        int threadNUM = 5;
+        int threadNUM = 10;
         int size = strings.size();
-        size = 10000;
+        size = 1000;
         for (int i = 0; i < threadNUM; i++) {
             int ld = size / threadNUM;
             int m = ld * i;
@@ -95,7 +95,7 @@ public class java1 {
                         String parentName = s[3];
                         String nextName = s[0];
                         String relationShape = s[1];
-            System.out.print("线程 - " + this.getName() + "  " + num +" "+ parentName + " - "  + " " + parentName + " - " + nextName + " - " + relationShape + "\n");
+            System.out.print("线程 - " + this.getName() + "  " + num +" " + parentName + " - " + nextName + " - " + relationShape + "\n");
 //                        int weight = 0;
 //            Entity entity = new Entity("", "", "", "");
                         Entity head = new Entity(parentName, "", "", "");
@@ -124,10 +124,12 @@ public class java1 {
 //        kg.printNodes();
 //        kg.printGraph();
 //        kg.printTriple();
+        System.out.println(kg.toJson().get("directions"));
 
         long endMili = System.currentTimeMillis();
 //        System.out.println("结束 s"+endMili);
-        System.out.println("\n\n总耗时为：" + (endMili - startMili) + "毫秒");
+        System.out.println("\n\n总耗时为：" + (endMili - startMili) + " 毫秒");
+        System.out.println("总耗时为：" + (endMili - startMili) / 1000 + " 秒");
     }
 
     public static void testMyRun() {

@@ -1,8 +1,10 @@
 package data;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -112,6 +114,15 @@ public class Triple{
         map1.put("rela", rela);
         map1.put("itemId", itemId);
         return map1;
+    }
+    public static JSONArray tripleListToJsonArray(List<Triple> l){
+        JSONArray jsonArray = new JSONArray();
+        for (Triple t:l
+             ) {
+            jsonArray.add(t.toMap());
+        }
+        return jsonArray;
+
     }
 }
 

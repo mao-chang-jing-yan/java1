@@ -1,8 +1,10 @@
 package data;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -55,6 +57,15 @@ public class Node{
         this.nodeName = nodeName;
         this.parentId = parentId;
         this.itemId = itemId;
+    }
+
+    public static JSONArray NodeListToJsonArray(List<Node> l){
+        JSONArray jsonArray = new JSONArray();
+        for (Node n:l
+             ) {
+            jsonArray.add(n.toJson());
+        }
+        return jsonArray;
     }
 
     public Map<String, Object> toMap(){
