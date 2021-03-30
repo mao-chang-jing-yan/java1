@@ -20,10 +20,10 @@ public abstract class MyRunnable implements Runnable {
         this.name = name;
     }
 
-    MyRunnable(Map<String ,Object> data) {
+    public MyRunnable(Map<String, Object> data) {
         this.data = data;
     }
-    MyRunnable() { }
+    public MyRunnable() { }
 
     MyRunnable(Map<String ,Object> data, String name) {
         this.data = data;
